@@ -1,0 +1,30 @@
+
+DATA ACCESS
+Sadece veriye eriþim kodlarýný burda gerçekleþtiririz
+Bu katmanda iþ kodu, loglama, validasyon gibi iþlemler asla yapýlmaz
+
+
+BUSINESS
+Bu katmanda sadece iþ kodlarý, kurallarý yazýlýr
+Örn bir bankacýlýk uygulamasýysa birine kredi vermemiz gerekiyor olsun. Kredi almaya uygun mu gibi karþýlaþtýrmalarý burada yaparýz
+Fakat kiþi ile ilgili bilgileri Veri Eriþim (DataAccess) katmanýndan alýrýz
+
+USER INTERFACE
+Console uygulamasý, windows form uygulamasý, mvc uygulamasý, mobil arayüz bunlarýn hepsi birer arayüz katmanýdýr
+Sadece arayüzü ilgilendiren kod yazýlmalýdýr. 
+Örn Bir MVC uygulamasýnda Kodlar Business ile iletiþime geçerek kodlar istenir, business'de DataAccess ile iletiþime geçer
+Arayüzden, Data Access'e doðrudan eriþilmez!
+
+ENTITIES
+Bu katmanda tüm domaine hizmet eden þeyleri tutarýz
+Arayüz bir ürünü listeler, Business ürünü kontrol eder, Data Access ise ürünü veritabanýna ekler yani ortada bir ürün nesnesi sürekli döner
+Dolayýsýyla entities katmanýnda nesnelerimizi tutarýz
+Domain veritabanýmýzdaki tablolar ve bu tablolarýn komplex yapýlarýný karþýlýk gelir(Ýki tablonun birleþimi gibi)
+
+CORE
+Bu katmanda tüm projelerde ortak kullanýðýmýz yapýlarý tutarýz. Yani bu Core'u yarýn birgün baþka bir projeye kopyalayarak kullanabiliriz
+Örn aspect'ler loglamadan, validasyon mimarisine kadar,cache yönetimi, kurum içerinde kullanýlan tüm utilities, ortak araçlar tutulabilir
+
+* Doðru kod doðru katmana yazýldýðý sürece projeye istenilen baþka UI'lar eklenebilir
+* UI -> Business -> DA  ||  DA -> Business -> UI þeklinde iletiþim gerçekleþir
+* Bunlara ek olarak Entity katmaný, yani yardýmcý katmanda Business Modeli, Domain Modeli tutabiliriz
